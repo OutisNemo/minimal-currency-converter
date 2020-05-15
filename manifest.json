@@ -1,0 +1,24 @@
+{
+	"manifest_version": 2,
+	"name": "Minimal Currency Converter",
+	"version": "0.7",
+	"description": "Multiple currency converter with real-time exchange rates and a minimalistic user interface.",
+	"homepage_url": "https://outisnemo.com",
+	"minimum_chrome_version": "18",
+	"browser_action": {
+	  "default_icon": "icons/icon.png",
+	  "default_title": "Minimal Currency Converter",
+	  "default_popup": "popup.html"
+	},
+	"background": {
+	  "scripts": [
+		"scripts/background.js"
+	  ]
+	},
+	"icons": {
+	  "16": "icons/icon.png",
+	  "32": "icons/icon.png",
+	  "48": "icons/icon.png",
+	  "128": "icons/icon.png"
+	}
+  }
