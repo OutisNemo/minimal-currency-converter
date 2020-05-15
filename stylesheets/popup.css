@@ -1,0 +1,52 @@
+table
+{
+	padding: 0px;
+	border-spacing: 0px;
+}
+
+.paddingtd
+{
+	padding: 1px 2px 1px 2px;
+}
+
+.width100
+{
+	width: 100%;
+}
+
+.throbber 
+{
+	background: url('/icons/throbber.svg');
+	display: inline-block;
+	height: 16px;
+	width: 16px;
+}
+
+input[type='password'],
+input[type='text'],
+input[type='url'],
+input:not([type]) {
+	-webkit-border-radius: 2px;
+	border: 1px solid #aaa;
+	font: -webkit-small-control;
+	padding: 3px;
+	width: 120px;
+}
+
+.close-subpage {
+	background-image: url('/icons/IDR_CLOSE_BAR.png');
+	height: 16px;
+	min-width: 0;
+	top: 16px;
+	width: 16px;
+	-webkit-box-shadow: none;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+	min-width: 0;
+	padding: 1px 6px;
+}
+
+.close-subpage:hover {
+  background-image: url('/icons/IDR_CLOSE_BAR_H.png');
+}
