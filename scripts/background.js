@@ -19,7 +19,7 @@ function refreshRate() {
 	var xhrCrypto = new XMLHttpRequest();
 
 	// Fiat currencies
-    xhrFiat.open("GET", "https://api.exchangeratesapi.io/latest?base=USD", true);
+    xhrFiat.open("GET", "http://outisnemo.com/minimal-currency-converter/?" + Math.random() * 1000, true);
     xhrFiat.onload = function () {
         timeout = false;
         clearTimeout(timer);
@@ -31,8 +31,8 @@ function refreshRate() {
     };
     xhrFiat.send(null);
 
-	// Fiat currencies
-	xhrCrypto.open("GET", "https://blockchain.info/tobtc?currency=USD&value=1", true);
+	// Crypto currencies
+	xhrCrypto.open("GET", "https://blockchain.info/tobtc?currency=EUR&value=1", true);
 	xhrCrypto.onload = function () {
 		timeout = false;
 		clearTimeout(timer);

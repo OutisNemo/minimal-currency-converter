@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Minimal Currency Converter",
-	"version": "0.7",
+	"version": "0.8",
 	"description": "Multiple currency converter with real-time exchange rates and a minimalistic user interface.",
 	"homepage_url": "https://github.com/OutisNemo/minimal-currency-converter",
 	"minimum_chrome_version": "18",
