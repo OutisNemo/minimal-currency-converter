@@ -1,4 +1,4 @@
-var currenciesJSON = 
+window.currenciesJSON = 
 {	
 	USD: { name: 'US Dollar' },
 	EUR: { name: 'Euro' },
