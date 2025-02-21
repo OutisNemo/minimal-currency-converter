@@ -7,7 +7,7 @@ function round(value, decimal) {
     return Math.round(value * Math.pow(10, decimal)) / Math.pow(10, decimal);
 }
 
-async function fetchWithTimeout(resource, options = {}, timeout = 10000) {
+async function fetchWithTimeout(resource, options = {}, timeout = 30000) {
     const controller = new AbortController();
     const id = setTimeout(() => controller.abort(), timeout);
     const response = await fetch(resource, {
