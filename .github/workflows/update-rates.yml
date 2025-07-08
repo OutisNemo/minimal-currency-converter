@@ -1,9 +1,9 @@
-name: Update exchange-rates.json
+name: Update exchange rates every 6 hours
 
 on:
-  schedule:
-    - cron: '* * * * *'
   workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
 
 permissions:
   contents: write
