@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Minimal Currency Converter",
-  "version": "1.1",
+  "version": "2.0",
   "description": "Multiple currency converter with real-time exchange rates and a minimalistic user interface.",
   "homepage_url": "https://github.com/OutisNemo/minimal-currency-converter",
   "minimum_chrome_version": "100",
@@ -9,6 +9,10 @@
   "background": {
     "service_worker": "scripts/service_worker.js"
   },
+  "host_permissions": [
+    "https://raw.githubusercontent.com/",
+    "https://api.coingecko.com/"
+  ],
   "icons": {
     "16": "icons/icon.png",
     "32": "icons/icon.png",

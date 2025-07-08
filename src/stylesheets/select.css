@@ -5,7 +5,6 @@ select {
 	-webkit-padding-end: 20px;
 	-webkit-padding-start: 2px;
 	-webkit-user-select: none;
-	//background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAAICAYAAAAbQcSUAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sCDwEnBT3jKacAAABaSURBVCjPY2CgA4gC4jQ8OIpokxKBgJmZ+RuQ+R8dg8RB8kQb9v//f4UFCxYsZGNj+4lsEIgPEgfJk+RPdAPJNgjdQD4+vi8UGYRs4Nu3b5soNgjJQFZi1AEAhHNE/wdnPVcAAAAASUVORK5CYII="), -webkit-linear-gradient(#fafafa, #f4f4f4 40%, #e5e5e5);
 	background-position: center right;
 	background-repeat: no-repeat;
 	border: 1px solid #aaa;
@@ -17,7 +16,7 @@ select {
 	padding-bottom: 2px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 170px;
+	width: 130px;
 }
 
 select:enabled:hover 
