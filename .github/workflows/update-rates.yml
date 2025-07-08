@@ -1,0 +1,33 @@
+name: Update exchange-rates.json
+
+on:
+  schedule:
+    - cron: '* * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with: { fetch-depth: 0 }
+
+      - name: Fetch & save rates
+        env:
+          ACCESS_KEY: ${{ secrets.EXCHANGE_API_KEY }}
+        run: |
+          mkdir -p data
+          curl -s "http://api.exchangeratesapi.io/v1/latest?base=EUR&access_key=${ACCESS_KEY}" \
+            -o data/rates.json
+
+      - name: Commit & push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/rates.json
+          git diff --cached --quiet || git commit -m "chore: update exchange rates" && git push
