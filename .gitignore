@@ -1,5 +1,9 @@
 node_modules
 
+# Playwright
+test-results/
+playwright-report/
+
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
