@@ -3,7 +3,7 @@ name: Update exchange rates every 6 hours
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 */12 * * *'
+    - cron: '0 16 * * *'
 
 permissions:
   contents: write
@@ -21,7 +21,14 @@ jobs:
         run: |
           mkdir -p data
           curl -s "http://api.exchangeratesapi.io/v1/latest?base=EUR&access_key=${ACCESS_KEY}" \
-            -o data/rates.json
+            -o data/rates.tmp.json
+          if ! jq -e '.success == true' data/rates.tmp.json > /dev/null; then
+            echo "API returned an error — skipping update:"
+            cat data/rates.tmp.json
+            rm data/rates.tmp.json
+            exit 1
+          fi
+          mv data/rates.tmp.json data/rates.json
 
       - name: Commit & push
         env:
