@@ -1,4 +1,7 @@
 const MAX_CURRENCIES = 15;
+const FETCH_TIMEOUT_MS = 30000;
+let CONVERT_TIMEOUT_MS = 10000;
+
 let cache = { USD: 1, KYD: 0.83 };
 let globalTimer = null;
 let timeout = false;
@@ -7,9 +10,9 @@ function round(value, decimal) {
   return Math.round(value * Math.pow(10, decimal)) / Math.pow(10, decimal);
 }
 
-async function fetchWithTimeout(resource, options = {}, timeout = 30000) {
+async function fetchWithTimeout(resource, options = {}, fetchTimeout = FETCH_TIMEOUT_MS) {
   const controller = new AbortController();
-  const id = setTimeout(() => controller.abort(), timeout);
+  const id = setTimeout(() => controller.abort(), fetchTimeout);
   const response = await fetch(resource, {
     ...options,
     signal: controller.signal,
@@ -67,7 +70,7 @@ function convertValue(value, from, to, callback) {
 
   globalTimer = setTimeout(() => {
     callback({ status: "error" });
-  }, 10000);
+  }, CONVERT_TIMEOUT_MS);
   convertValueRecursive(value, from, to, callback);
 }
 
@@ -137,6 +140,16 @@ refreshRate();
 setInterval(refreshRate, 15 * 60 * 1000);
 
 manageVersion();
+
+// Test-only helpers — function declarations are used so sw.evaluate() can reach them.
+/* eslint-disable no-unused-vars */
+function _testGetCache() { return JSON.parse(JSON.stringify(cache)); }
+function _testGetTimeoutFlag() { return timeout; }
+function _testSeedCache(rates) { Object.assign(cache, rates); timeout = false; }
+function _testClearCache() { for (const k in cache) { delete cache[k]; } timeout = false; }
+function _testSetConvertTimeoutMs(ms) { CONVERT_TIMEOUT_MS = ms; }
+function _testCallRefreshRate() { return refreshRate(); }
+/* eslint-enable no-unused-vars */
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.type === "convertValue") {
